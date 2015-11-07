@@ -1,3 +1,67 @@
-<div id='container'>
+<div id='container' ng-controller="LinksController as linksCtrl">
   <!-- Your html here -->
+  <input type="text" ng-model="search" placeholder="search"/>
+  <ul class="linkslist">
+
+    <li class="individualLink" ng-repeat="link in links | filter:search">
+      <img src="../../assets/redirect_icon.png" />
+      <div class="info">
+        <div class="visits"><span class="count"> {{visits}} </span>Visits</div>
+        <div class="title"> {{title}} </div>
+        <div class="original"> {{url}} </div>
+        <a href=" {{base_url}}/{{code}} "> {{base_url}}/{{code}} </a>
+      </div>
+    </li>
+
+  </ul>
 </div>
+
+
+<!-- 
+
+<img src='/redirect_icon.png'/>
+  <div class='info'>
+    <div class='visits'><span class='count'>{{visits}}</span>Visits</div>
+    <div class='title'>{{title}}</div>
+    <div class='original'>{{url}}</div>
+    <a href='{{base_url}}/{{code}}'>{{base_url}}/{{code}}</a>
+  </div>
+
+
+
+
+
+ng-controller="LinksController as linksCtrl" 
+  <ul class=""
+  <li class= "" ng-repeat="somthing in listofsomething" (or ng-repeat="(key, val) in obj")
+    <div class="">
+      <h3><a href="">click me</a></h3>
+      <p></p>
+      <cite class=""></cite>
+
+
+<script id='layout' type='text/x-handlebars-template'>
+  <div class='navigation'>
+  <ul>
+    <li><a href='#' class='index'>All Links</a></li>
+    <li><a href='#' class='create'>Shorten</a></li>
+  </ul>
+    <a href='/logout' class='logout'>Logout</a>
+  </div>
+  <div id='container'></div>
+</script>
+
+
+<script id='link' type='text/x-handlebars-template'>
+  <img src='/redirect_icon.png'/>
+  <div class='info'>
+    <div class='visits'><span class='count'>{{visits}}</span>Visits</div>
+    <div class='title'>{{title}}</div>
+    <div class='original'>{{url}}</div>
+    <a href='{{base_url}}/{{code}}'>{{base_url}}/{{code}}</a>
+  </div>
+</script>
+
+
+
+-->
