@@ -2,7 +2,7 @@ angular.module('shortly.services', [])
 
 .factory('Links', function ($http) {
   // Your code here
-  var getData = function() {        //not sure like the name getData
+  var getData = function() {        //getAll
     return $http({
       method:'GET',
       url: '/api/links'          //got this url from server/config/middleware.js
@@ -11,13 +11,14 @@ angular.module('shortly.services', [])
       return resp.data;
     });
   };
-  var postData = function(link) {     //not sure like the name postData
+  var postData = function(link) {     //addLink
     return $http({
       method:'POST',
       url: '/api/links',
-      data: link
+      data: link   // {url: 'http://www.yahoo.com'} ==> this must be object!!
     })
-    .then(function(resp) {
+    .then(function(resp) {        //don't need**
+      console.log(resp.data);
       resp.data.token;
     })
   };

@@ -7,9 +7,12 @@ angular.module('shortly.shorten', [])
   //not sure about this
   angular.extend($scope, Links);
 
-  $scope.addLink = function () {
-    Links.postData($scope.link)
+  $scope.addLink = function (linkobj) {
+    //$scope.loading = true;  //spiffygif
+    console.log('now trying to shorten', linkobj);
+    Links.postData(linkobj)
       .then(function(data) {
+        //$scope.loading = false;
         console.log(data); //???
         $location.path('/links'); //example looks like it goes to /links here
       })

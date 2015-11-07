@@ -1,74 +1,22 @@
 <div id='container'>
   <!-- Your html here -->
-  <input type="text" ng-model="search" placeholder="search"/>
-  <ul class="linkslist" ng-controller="LinksController as linksCtrl">
+  <input type="text" ng-model="search" placeholder="filter"/>
 
-    <li class="individualLink" ng-repeat="link in links | filter:search">
+  <ul class="linkslist" ng-controller="LinksController">
+
+    <li class="individualLink fx-fade-up fx-speed-400 fx-easing-strong" ng-repeat="link in data.links | filter:search | orderBy:'created_at'">
       <img src="../../assets/redirect_icon.png" />
       <div class="info">
-        <div class="visits"><span class="count"> {{visits}} </span>Visits</div>
-        <div class="title"> {{title}} </div>
-        <div class="original"> {{url}} </div>
-        <a href=" {{base_url}}/{{code}} "> {{base_url}}/{{code}} </a>
+        <div class="visits">
+          <span class="count"> {{link.visits}} </span>Visits
+        </div>
+        <div class="title"> {{link.title}} </div>
+        <div class="original"> {{link.url}} </div>
+        
+        <a href="http://localhost:3000/api/links/{{link.code}}"> {{link.base_url}}/{{link.code}} </a>
       </div>
     </li>
 
   </ul>
 </div>
 
-
-<!-- 
-
-questions:
-  1. how do I reference objects above so that right data shows on page
-    e.g., {{visits}} : what really should go here?
-  2. is ng-controller assignment in correct place
-  3. will the search / filter work
-
-
-<img src='/redirect_icon.png'/>
-  <div class='info'>
-    <div class='visits'><span class='count'>{{visits}}</span>Visits</div>
-    <div class='title'>{{title}}</div>
-    <div class='original'>{{url}}</div>
-    <a href='{{base_url}}/{{code}}'>{{base_url}}/{{code}}</a>
-  </div>
-
-
-
-
-
-ng-controller="LinksController as linksCtrl" 
-  <ul class=""
-  <li class= "" ng-repeat="somthing in listofsomething" (or ng-repeat="(key, val) in obj")
-    <div class="">
-      <h3><a href="">click me</a></h3>
-      <p></p>
-      <cite class=""></cite>
-
-
-<script id='layout' type='text/x-handlebars-template'>
-  <div class='navigation'>
-  <ul>
-    <li><a href='#' class='index'>All Links</a></li>
-    <li><a href='#' class='create'>Shorten</a></li>
-  </ul>
-    <a href='/logout' class='logout'>Logout</a>
-  </div>
-  <div id='container'></div>
-</script>
-
-
-<script id='link' type='text/x-handlebars-template'>
-  <img src='/redirect_icon.png'/>
-  <div class='info'>
-    <div class='visits'><span class='count'>{{visits}}</span>Visits</div>
-    <div class='title'>{{title}}</div>
-    <div class='original'>{{url}}</div>
-    <a href='{{base_url}}/{{code}}'>{{base_url}}/{{code}}</a>
-  </div>
-</script>
-
-
-
--->

@@ -1,36 +1,20 @@
 <div id='container'>
 <!-- Your code here -->
 
-  <form class="shortenLink" ng-controller="ShortenController as shortenCtrl">
-    <input class="text" type="text" name="url">
-    <input type="submit" value="Shorten">
+  <form class="shortenLink" name="shortenLink" ng-controller="ShortenController" novalidate>
+
+    <input class="text" type="url" name="url" ng-model="$scope.link.url" placeholder="enter url" required ng-class="{'error': shortenLink.$invalid && shortenLink.$dirty}">
+    
+    <button type="submit" value="Shorten" ng-disabled="shortenLink.$invalid" ng-click="addLink($scope.link)">Submit</button>
+    
+    <div class="message" ng-if="shortenLink.url.$error.required && shortenLink.$dirty">
+      <h3>url required</h3>
+    </div>
+    <div class="message" ng-if="shortenLink.url.$error.url && shortenLink.$dirty">
+      <h3>not a valid url</h3>
+    </div>
+  
   </form>
-  <img class="spinner" src="../../assets/spiffygif_46x46.gif">
-  <div class="message"></div>
+  
 
 </div>
-
-
-
-
-<!-- Your code here
-
-questions:
-  1. how do i grab data user has submitted, assign to $scope.link object?
-  2. will probably need to do dirty checking
-    highlight box until valid url
-    redirect for invalid url
-
-
-
-<script id='create' type='text/x-handlebars-template'>
-  <form>
-      <input class='text' type='text' name='url'>
-      <input type='submit' value='Shorten'>
-  </form>
-  <img class='spinner' src='/spiffygif_46x46.gif'>
-  <div class='message'></div>
-</script>
-
-
- -->
