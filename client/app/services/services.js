@@ -2,7 +2,7 @@ angular.module('shortly.services', [])
 
 .factory('Links', function ($http) {
   // Your code here
-  var getData = function() {
+  var getData = function() {        //not sure like the name getData
     return $http({
       method:'GET',
       url: '/api/links'          //got this url from server/config/middleware.js
@@ -11,8 +11,20 @@ angular.module('shortly.services', [])
       return resp.data;
     });
   };
+  var postData = function(link) {     //not sure like the name postData
+    return $http({
+      method:'POST',
+      url: '/api/links',
+      data: link
+    })
+    .then(function(resp) {
+      resp.data.token;
+    })
+  };
+
   return {
-    getData: getData
+    getData: getData,
+    postData: postData
   };
 })
 .factory('Auth', function ($http, $location, $window) {

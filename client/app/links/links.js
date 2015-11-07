@@ -5,14 +5,16 @@ angular.module('shortly.links', [])
   //maybe an array of objects, which are links -- JSON??
   $scope.data = {};   
 
-  //probably gets links from db; does not happen on click happens on pg load
-  //$scope.getLinks = function() {};    
+  //not sure about this
   angular.extend($scope, Links);
 
+  //gets links from db
+  //looks like needs to be invoked 
+  //to happen when controller loaded 
   $scope.getLinks = function() {
     Links.getData()
       .then(function(data) {
-        $scope.data.links = data;
+        $scope.data.links = data; //had to set .links property = data
       })
       .catch(function(err) {
         console.log(err);

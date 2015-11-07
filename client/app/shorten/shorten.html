@@ -1,12 +1,26 @@
 <div id='container'>
 <!-- Your code here -->
 
+  <form class="shortenLink" ng-controller="ShortenController as shortenCtrl">
+    <input class="text" type="text" name="url">
+    <input type="submit" value="Shorten">
+  </form>
+  <img class="spinner" src="../../assets/spiffygif_46x46.gif">
+  <div class="message"></div>
+
 </div>
 
 
 
 
 <!-- Your code here
+
+questions:
+  1. how do i grab data user has submitted, assign to $scope.link object?
+  2. will probably need to do dirty checking
+    highlight box until valid url
+    redirect for invalid url
+
 
 
 <script id='create' type='text/x-handlebars-template'>

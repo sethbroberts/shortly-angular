@@ -1,7 +1,7 @@
-<div id='container' ng-controller="LinksController as linksCtrl">
+<div id='container'>
   <!-- Your html here -->
   <input type="text" ng-model="search" placeholder="search"/>
-  <ul class="linkslist">
+  <ul class="linkslist" ng-controller="LinksController as linksCtrl">
 
     <li class="individualLink" ng-repeat="link in links | filter:search">
       <img src="../../assets/redirect_icon.png" />
@@ -18,6 +18,13 @@
 
 
 <!-- 
+
+questions:
+  1. how do I reference objects above so that right data shows on page
+    e.g., {{visits}} : what really should go here?
+  2. is ng-controller assignment in correct place
+  3. will the search / filter work
+
 
 <img src='/redirect_icon.png'/>
   <div class='info'>
